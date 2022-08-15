@@ -10,7 +10,6 @@ const Events = (props) => {
       <div class="card shadow" style={{ width:"20rem" }} key={evento.index}>
         <div className='inner'> <img class="card-img-top" src={evento.image} alt="img"/></div>
   <div class="card-body text-center">
-    <h1 className='title'>{evento.image}</h1>
     <h5 class="card-body">{evento.theme}</h5>
     <h5 class="card-body"><i class="fa-solid fa-calendar-days"></i>{evento.date}</h5>
     <h5 class="card-body"><i class="fa-solid fa-location-dot"></i> {evento.location}</h5>

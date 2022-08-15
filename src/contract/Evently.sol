@@ -29,7 +29,7 @@ interface IERC20Token {
 }
 contract Evently{
      uint internal eventsLength = 0;
-      address internal cUsdTokenAddress =   0x686c626E48bfC5DC98a30a9992897766fed4Abd3;
+      address internal cUsdTokenAddress =    0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1;
 
       
        struct Eventt{
@@ -115,5 +115,9 @@ contract Evently{
         events[_index].follow++;
         events[_index].hasFollowed[msg.sender] = true;
     } 
+    
+    function getEventsLength() public view returns (uint) {
+      return eventsLength;
+    }
 
 }

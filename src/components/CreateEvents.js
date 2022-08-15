@@ -27,7 +27,7 @@ const [image, setImage] = useState('');
 };
 
 return(
-    <form className='zk' onSubmit={submitHandler}>
+    <form className='YR' onSubmit={submitHandler}>
     <div class="form-row" >
       
         <input type="text" class="form-control" value={image}
@@ -45,7 +45,7 @@ return(
 <input type="text" class="form-control mt-4" value={price}
            onChange={(e) => setPrice(e.target.value)} placeholder="price"/>
 
-<button type="submit" class="btn btn-outline-dark lk">Add Event</button>
+<button type="submit" class="btn btn-outline-dark lk">Create Event</button>
 
 </div>
 </form>
