@@ -1,30 +1,23 @@
-import './App.css';
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar";
-import { useState, useEffect, useCallback } from "react";
-
-
-
+import { useState, useEffect } from "react";
 
 import Web3 from "web3";
 import { newKitFromWeb3 } from "@celo/contractkit";
 import BigNumber from "bignumber.js";
 import IERC from "./contract/IERC.abi.json";
-import Evently from  './contract/Evently.abi.json';
-import CreateEvents from './components/CreateEvents';
-import Events from './components/Events';
-
+import Evently from "./contract/Evently.abi.json";
+import CreateEvents from "./components/CreateEvents";
+import Events from "./components/Events";
 
 const ERC20_DECIMALS = 18;
 
-
-const contractAddress = "0x3065cD68601af6799F6E5037F0382E67CD95667b";
+const contractAddress = "0x1eE84b939e37d95451616A1346AF5F5297f9BDEE";
 const cUSDContractAddress = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1";
 
-
-
-function App(){
-const [contract, setcontract] = useState(null);
+function App() {
+	const [contract, setcontract] = useState(null);
 	const [address, setAddress] = useState(null);
 	const [kit, setKit] = useState(null);
 	const [cUSDBalance, setcUSDBalance] = useState(0);
@@ -102,6 +95,9 @@ const [contract, setcontract] = useState(null);
 					location: event[4],
 					follow: event[5],
 					price: event[6],
+					sale: event[7],
+					hasFollowed: event[8]
+
 				});
 			});
 			_evento.push(_events);
@@ -167,3 +163,4 @@ const [contract, setcontract] = useState(null);
 }
 
 export default App;
+
