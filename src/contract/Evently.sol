@@ -73,7 +73,8 @@ contract Evently {
             string memory location,
             uint follow,
             uint price,
-            bool sale
+            bool sale,
+            bool hasFollowed
         )
     {
         owner = events[_index].owner;
@@ -84,6 +85,7 @@ contract Evently {
         follow = events[_index].follow;
         price = events[_index].price;
         sale = events[_index].sale;
+        hasFollowed = events[_index].hasFollowed[msg.sender];
     }
 
     /// @dev allows users to create an event
