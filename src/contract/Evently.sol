@@ -42,6 +42,7 @@ contract Evently {
         uint price;
         bool sale;
         mapping(address => bool) hasFollowed;
+
     }
 
     mapping(uint => Event) internal events;

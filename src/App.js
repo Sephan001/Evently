@@ -97,6 +97,7 @@ function App() {
 					price: event[6],
 					sale: event[7],
 					hasFollowed: event[8]
+
 				});
 			});
 			_evento.push(_events);
@@ -162,3 +163,4 @@ function App() {
 }
 
 export default App;
+

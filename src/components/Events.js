@@ -30,7 +30,6 @@ const Events = (props) => {
 									<i class="fa-solid fa-location-dot"></i>{" "}
 									{evento.location}
 								</h5>
-
 								<p class="card-text">
 									{evento.price / 1000000000000000000}cUSD
 								</p>
@@ -112,3 +111,4 @@ const Events = (props) => {
 	);
 };
 export default Events;
+
