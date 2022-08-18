@@ -95,6 +95,8 @@ function App() {
 					location: event[4],
 					follow: event[5],
 					price: event[6],
+					sale: event[7],
+					hasFollowed: event[8]
 				});
 			});
 			_evento.push(_events);
