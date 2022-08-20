@@ -7,9 +7,27 @@
 				"type": "uint256"
 			}
 		],
-		"name": "buyTicket",
+		"name": "buyEvent",
 		"outputs": [],
 		"stateMutability": "payable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_index",
+				"type": "uint256"
+			},
+			{
+				"internalType": "uint256",
+				"name": "_price",
+				"type": "uint256"
+			}
+		],
+		"name": "changePrice",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	},
 	{
@@ -22,11 +40,6 @@
 			{
 				"internalType": "string",
 				"name": "_theme",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "_date",
 				"type": "string"
 			},
 			{
@@ -70,38 +83,43 @@
 		"outputs": [
 			{
 				"internalType": "address payable",
-				"name": "",
+				"name": "owner",
 				"type": "address"
 			},
 			{
 				"internalType": "string",
-				"name": "",
+				"name": "image",
 				"type": "string"
 			},
 			{
 				"internalType": "string",
-				"name": "",
+				"name": "theme",
 				"type": "string"
 			},
 			{
 				"internalType": "string",
-				"name": "",
-				"type": "string"
-			},
-			{
-				"internalType": "string",
-				"name": "",
+				"name": "location",
 				"type": "string"
 			},
 			{
 				"internalType": "uint256",
-				"name": "",
+				"name": "follow",
 				"type": "uint256"
 			},
 			{
 				"internalType": "uint256",
-				"name": "",
+				"name": "price",
 				"type": "uint256"
+			},
+			{
+				"internalType": "bool",
+				"name": "sale",
+				"type": "bool"
+			},
+			{
+				"internalType": "bool",
+				"name": "hasFollowed",
+				"type": "bool"
 			}
 		],
 		"stateMutability": "view",
@@ -118,6 +136,32 @@
 			}
 		],
 		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_index",
+				"type": "uint256"
+			}
+		],
+		"name": "toggleSale",
+		"outputs": [],
+		"stateMutability": "nonpayable",
+		"type": "function"
+	},
+	{
+		"inputs": [
+			{
+				"internalType": "uint256",
+				"name": "_index",
+				"type": "uint256"
+			}
+		],
+		"name": "unfollowEvent",
+		"outputs": [],
+		"stateMutability": "nonpayable",
 		"type": "function"
 	}
 ]

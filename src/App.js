@@ -1,30 +1,23 @@
-import './App.css';
+import "./App.css";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Navbar from "./components/Navbar";
-import { useState, useEffect, useCallback } from "react";
-
-
-
+import { useState, useEffect } from "react";
 
 import Web3 from "web3";
 import { newKitFromWeb3 } from "@celo/contractkit";
 import BigNumber from "bignumber.js";
 import IERC from "./contract/IERC.abi.json";
-import Evently from  './contract/Evently.abi.json';
-import CreateEvents from './components/CreateEvents';
-import Events from './components/Events';
-
+import Evently from "./contract/Evently.abi.json";
+import CreateEvents from "./components/CreateEvents";
+import Events from "./components/Events";
 
 const ERC20_DECIMALS = 18;
 
-
-const contractAddress = "0x3065cD68601af6799F6E5037F0382E67CD95667b";
+const contractAddress = "0x2D940dD7636DEd896AeEF099F6b6c014B5a8e5E2";
 const cUSDContractAddress = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1";
 
-
-
-function App(){
-const [contract, setcontract] = useState(null);
+function App() {
+	const [contract, setcontract] = useState(null);
 	const [address, setAddress] = useState(null);
 	const [kit, setKit] = useState(null);
 	const [cUSDBalance, setcUSDBalance] = useState(0);
@@ -98,10 +91,11 @@ const [contract, setcontract] = useState(null);
 					owner: event[0],
 					image: event[1],
 					theme: event[2],
-					date: event[3],
-					location: event[4],
-					follow: event[5],
-					price: event[6],
+					location: event[3],
+					price: event[4],
+					sale: event[5],
+					hasFollowed: event[6]
+
 				});
 			});
 			_evento.push(_events);
@@ -111,13 +105,13 @@ const [contract, setcontract] = useState(null);
 		console.log(events);
 	};
 
-	const CreateEvent = async (_image, _theme, _date, _location, price) => {
+	const CreateEvent = async (_image, _theme, _location, price) => {
 		const _price = new BigNumber(price)
 			.shiftedBy(ERC20_DECIMALS)
 			.toString();
 		try {
 			await contract.methods
-				.createEvent(_image, _theme, _date, _location, _price)
+				.createEvent(_image, _theme, _location, _price)
 				.send({ from: address });
 			getEvents();
 		} catch (error) {
@@ -134,6 +128,19 @@ const [contract, setcontract] = useState(null);
 			alert.log(error);
 		}
 	};
+	
+	const unFollowEvent = async (_index) => {
+		try {
+			await contract.methods.unfollowEvent(_index).send({ from: address });
+			getEvents();
+			getBalance();
+		} catch (error) {
+			alert.log(error);
+		}
+	};
+
+
+	 
 
 	const buyTicket = async (_index) => {
 		try {
@@ -153,6 +160,8 @@ const [contract, setcontract] = useState(null);
 		}
 	};
 
+	 
+
 	return (
 		<div>
 			<Navbar balance={cUSDBalance} />
@@ -160,6 +169,8 @@ const [contract, setcontract] = useState(null);
 				events={events}
 				buyTicket={buyTicket}
 				followEvent={followEvent}
+				unFollowEvent={unFollowEvent}
+				 
 			/>
 			<CreateEvents CreateEvent={CreateEvent} />
 		</div>
