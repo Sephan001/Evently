@@ -80,7 +80,6 @@ function App() {
 
 	const getEvents = async () => {
 		const eventsLength = await contract.methods.getEventsLength().call();
-		console.log(eventsLength);
 		const _evento = [];
 		for (let index = 0; index < eventsLength; index++) {
 			let _events = new Promise(async (resolve, reject) => {
@@ -92,17 +91,16 @@ function App() {
 					image: event[1],
 					theme: event[2],
 					location: event[3],
-					price: event[4],
-					sale: event[5],
-					hasFollowed: event[6]
-
+					follow: event[4],
+					price: event[5],
+					sale: event[6],
+					hasFollowed: event[7],
 				});
 			});
 			_evento.push(_events);
 		}
 		const _events = await Promise.all(_evento);
 		setEvents(_events);
-		console.log(events);
 	};
 
 	const CreateEvent = async (_image, _theme, _location, price) => {
@@ -128,19 +126,18 @@ function App() {
 			alert.log(error);
 		}
 	};
-	
+
 	const unFollowEvent = async (_index) => {
 		try {
-			await contract.methods.unfollowEvent(_index).send({ from: address });
+			await contract.methods
+				.unfollowEvent(_index)
+				.send({ from: address });
 			getEvents();
 			getBalance();
 		} catch (error) {
 			alert.log(error);
 		}
 	};
-
-
-	 
 
 	const buyTicket = async (_index) => {
 		try {
@@ -160,8 +157,6 @@ function App() {
 		}
 	};
 
-	 
-
 	return (
 		<div>
 			<Navbar balance={cUSDBalance} />
@@ -170,7 +165,6 @@ function App() {
 				buyTicket={buyTicket}
 				followEvent={followEvent}
 				unFollowEvent={unFollowEvent}
-				 
 			/>
 			<CreateEvents CreateEvent={CreateEvent} />
 		</div>
