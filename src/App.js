@@ -149,7 +149,7 @@ function App() {
 			await cUSDContract.methods
 				.approve(contractAddress, events[_index].price)
 				.send({ from: address });
-			await contract.methods.buyTicket(_index).send({ from: address });
+			await contract.methods.buyEvent(_index).send({ from: address });
 			getEvents();
 			getBalance();
 		} catch (error) {
