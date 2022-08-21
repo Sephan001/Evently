@@ -21,7 +21,7 @@ const Navbar = (props) => {
 
           
 
-            <button className="btn btn-outline-success" type="submit">Balance: {props.balance} </button>
+            <button className="btn btn-outline-success jk" type="submit">Balance: {props.balance} </button>
 
         </div>
 

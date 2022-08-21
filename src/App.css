@@ -4,13 +4,19 @@
   width: 650px;
 }
 
- 
+ .jk{
+  position: absolute;
+  left: 86.5rem;
+ }
  
  .lk{
-   position: absolute;
-   padding-top: 100px;
+  
+   padding-right: 100px;
  }
  .container{
   margin-top: 110px !important;
+ }
+ .YR{
+  padding-left: 450px;
  }
   
